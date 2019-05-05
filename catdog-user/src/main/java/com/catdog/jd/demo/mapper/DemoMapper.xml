@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catdog.jd.demo.mapper.DemoMapper">
+
+
+
+
+    <select id="get" resultType="java.util.Map">
+      SELECT * FROM table_test
+    </select>
+
+    <insert id="add" parameterType="com.catdog.jd.demo.entity.TestTable">
+        INSERT INTO test_table (name,pwd,createdate) VALUE (#{name},#{pwd},#{date})
+    </insert>
+
+    <insert id="add2" parameterType="com.catdog.jd.demo.entity.TestTable">
+        insert INTO test_table2 (name, pwd, createdate) VALUES
+        <foreach collection="arrayList" item="item" index="index" separator=",">
+            (#{item.name},#{item.pwd},#{item.date})
+        </foreach>
+    </insert>
+</mapper>
